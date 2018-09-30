@@ -1,20 +1,23 @@
+import java.util.Random;
 /**
  * VendingMachine class
  *
  * @author rthatavarthi3
  */
 public class VendingMachine {
-
-    private static double totalSales;
-    private VendingItem[][][] shelf;
-    private int luckyChance;
-    private Random rand;
+    // Total amount of money made
+    private static double totalSales = 0;
+    private VendingItem[][][] shelf =  new VendingItem[6][3][5];
+    // % Chance to get free item on current vend() call
+    private int luckyChance = 0;
+    // Creates random number
+    private Random rand = new Random();
 
     /**
      * Creates a VendingMachine Object
      */
     public VendingMachine() {
-
+        restock();
     }
 
     public VendingItem vend(String code) {
@@ -26,23 +29,46 @@ public class VendingMachine {
     }
 
     public void restock() {
-
+        int venLen= VendingItem.value().length;
+        for (int i = 0; i < shelf.length; i++){
+            for (int j = 0; j < shelf[i].length; j++){
+                for (int k = 0; k < shelf[i][j].length; k++){
+                    shelf[i][j][k] = VendingItem.values()[rand.nextInt(venLen)];
+                }
+            }
+        }
     }
 
     public static double getTotalSales() {
-        return 0.0;
+        return totalSales;
     }
 
     public int getNumberOfItems() {
-        return 0;
+        int numItems = 0;
+        for (int i = 0; i < shelf.length; i++){
+            for (int j = 0; j < shelf[i].length; j++){
+                for (int k = 0; k < shelf[i][j].length; k++){
+                    numItems++;
+                }
+            }
+        }
+        return numItems;
     }
     
     public double getTotalValue() {
-        return 0.0;
+        double totValue = 0; 
+        for (int i = 0; i < shelf.length; i++){
+            for (int j = 0; j < shelf[i].length; j++){
+                for (int k = 0; k < shelf[i][j].length; k++){
+                    totValue = totValue + shelf[i][j][k].getPrice();
+                }
+            }
+        }
+        return totValue;
     }
 
     public int getLuckyChance() {
-        return 0;
+        return luckyChance;
     }
 
     public String toString() {
