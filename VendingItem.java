@@ -6,7 +6,7 @@ public enum VendingItem {
 
     private final double price;
     
-    public VendingItem (double price) {
+    VendingItem(double price) {
 
         this.price = price;
     }
@@ -14,6 +14,7 @@ public enum VendingItem {
         return this.price;;
     }
     public String toString() {
-        return "(name): xx.xx";
+        String output = String.format("%s: %.2f",this.name(),this.getPrice());
+        return output;
     }
 }
