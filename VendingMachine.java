@@ -177,8 +177,6 @@ public class VendingMachine {
             + "value of $%.2f.%n", getNumberOfItems(), getTotalValue()));
         s.append(String.format("Total sales across vending machines "
             + "is now: $%.2f.%n", getTotalSales()));
-
-        s.append(getLuckyChance());
         return s.toString();
     }
 
