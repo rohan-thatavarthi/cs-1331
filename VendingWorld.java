@@ -4,6 +4,7 @@ import java.util.Scanner;
  * Client code for for VendingMachine classes.
  *
  * @author ftejani6
+ * @version 1.0
  */
 public class VendingWorld {
     /**
